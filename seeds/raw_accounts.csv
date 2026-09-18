@@ -1,0 +1,7 @@
+account_id,client_id,account_type,status,opened_at,current_balance
+AC001,C001,investment,open,2024-01-16,125000.00
+AC002,C001,savings,open,2024-02-01,18000.00
+AC003,C002,investment,open,2024-03-21,925000.00
+AC004,C003,savings,closed,2024-04-03,0.00
+AC005,C004,investment,open,2024-07-12,87000.00
+AC006,C005,savings,open,2025-01-06,12500.00
