@@ -1,0 +1,35 @@
+name: dbt build
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: client_analytics
+          POSTGRES_USER: analytics
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports: ["5433:5432"]
+        options: >-
+          --health-cmd "pg_isready -U analytics -d client_analytics"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DBT_PROFILES_DIR: ${{ github.workspace }}
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5433
+      POSTGRES_DB: client_analytics
+      POSTGRES_USER: analytics
+      POSTGRES_PASSWORD: ""
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: dbt deps
+      - run: dbt seed --full-refresh
+      - run: dbt build

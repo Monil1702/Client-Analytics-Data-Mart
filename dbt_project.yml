@@ -1,0 +1,28 @@
+name: client_analytics
+version: 1.0.0
+config-version: 2
+profile: client_analytics
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  client_analytics:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table
+      +schema: analytics
+
+seeds:
+  client_analytics:
+    +schema: raw
+    raw_clients:
+      +column_types: {client_id: varchar(20)}
+    raw_accounts:
+      +column_types: {account_id: varchar(20), client_id: varchar(20)}
