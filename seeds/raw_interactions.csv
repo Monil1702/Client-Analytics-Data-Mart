@@ -1,0 +1,6 @@
+interaction_id,client_id,interaction_at,channel,outcome
+I001,C001,2025-02-10 10:00:00,email,resolved
+I002,C002,2025-02-12 14:30:00,meeting,follow_up
+I003,C004,2025-02-15 09:15:00,phone,resolved
+I004,C001,2025-02-20 11:00:00,portal,self_service
+I005,C005,2025-02-21 16:10:00,email,resolved
