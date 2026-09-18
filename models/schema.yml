@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_clients
+    description: Standardized client master data.
+    columns:
+      - name: client_id
+        tests: [unique, not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['active', 'inactive']
+  - name: stg_accounts
+    columns:
+      - name: account_id
+        tests: [unique, not_null]
+      - name: client_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_clients')
+                field: client_id
+  - name: stg_transactions
+    columns:
+      - name: transaction_id
+        tests: [unique, not_null]
+      - name: transaction_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['deposit', 'withdrawal']
+  - name: stg_interactions
+    columns:
+      - name: interaction_id
+        tests: [unique, not_null]
+  - name: mart_client_360
+    description: One reporting-ready row per client.
+    columns:
+      - name: client_id
+        tests: [unique, not_null]
+      - name: assets_under_management
+        tests: [not_null]
+  - name: mart_daily_kpis
+    columns:
+      - name: reporting_date
+        tests: [unique, not_null]
