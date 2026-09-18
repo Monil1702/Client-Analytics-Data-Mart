@@ -1,0 +1,6 @@
+client_id,advisor_id,full_name,segment,status,created_at
+C001,A01,Avery Chen,mass_affluent,active,2024-01-15
+C002,A01,Jordan Patel,high_net_worth,active,2024-03-20
+C003,A02,Sam Tremblay,mass_market,inactive,2024-04-02
+C004,A02,Taylor Smith,mass_affluent,active,2024-07-11
+C005,A01,Morgan Lee,mass_market,active,2025-01-05
