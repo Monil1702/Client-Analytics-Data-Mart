@@ -1,0 +1,7 @@
+transaction_id,account_id,transaction_date,transaction_type,amount
+T001,AC001,2025-01-05,deposit,5000.00
+T002,AC001,2025-01-18,withdrawal,1200.00
+T003,AC003,2025-01-12,deposit,25000.00
+T004,AC005,2025-02-02,deposit,3000.00
+T005,AC006,2025-02-04,withdrawal,500.00
+T006,AC002,2025-02-10,deposit,750.00
